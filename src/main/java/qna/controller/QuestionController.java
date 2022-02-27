@@ -8,7 +8,7 @@ import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import qna.util.RequestFactory;
 
-@WebServlet("/question/q/add")
+@WebServlet("/question/add")
 public class QuestionController extends HttpServlet {
     
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
@@ -20,8 +20,17 @@ public class QuestionController extends HttpServlet {
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		doGet(request, response);
+		
+		RequestFactory factory = new RequestFactory(request, response);
+		
+		HttpServletRequest req = factory.getReq();
+		
+		String title = req.getParameter("title").toString();
+		String body = req.getParameter("body").toString();
+		
+		System.out.println(title);
+		System.out.println(body);
+		
 	}
 
 }

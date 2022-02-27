@@ -2,12 +2,13 @@ package qna.util;
 
 import java.io.IOException;
 import java.io.UnsupportedEncodingException;
-
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
+import lombok.Data;
 
+@Data
 public class RequestFactory {
 	
 	private HttpServletRequest req;
@@ -35,12 +36,11 @@ public class RequestFactory {
 				
 		try {
 			requestDispatcher.forward(req, resp);
-		} catch (ServletException | IOException e) {
+		} catch (Exception e) {
 			e.printStackTrace();
 		}
 		
 	}
-	
-	
+
 
 }
