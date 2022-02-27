@@ -1,9 +1,7 @@
 package qna.util;
 
-import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import jakarta.servlet.RequestDispatcher;
-import jakarta.servlet.ServletException;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
 import lombok.Data;
@@ -41,6 +39,5 @@ public class RequestFactory {
 		}
 		
 	}
-
 
 }
