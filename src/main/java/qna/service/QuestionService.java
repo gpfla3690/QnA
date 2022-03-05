@@ -14,6 +14,8 @@ public class QuestionService {
 	public QuestionService() {
 		SqlSession session = SessionFactory.getSession();
 		questionDao = session.getMapper(QuestionDao.class);
+		
+		this.sqlSession = session;
 	}
 	
 	public void save(String title, String body) {
@@ -22,7 +24,6 @@ public class QuestionService {
 		questionDao.save(question);
 		
 		sqlSession.commit();
-		sqlSession.close();
 		
 		
 	}
