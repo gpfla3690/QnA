@@ -17,11 +17,11 @@
 		<form action="/question/add" method="post">
 		
 			<div class="">
-				<input type="text" name="title"/>
+				<input type="text" name="title" placeholder="질문 제목을 입력해 주세요"/>
 			</div>
 			
 			<div class="">
-				<input type="text" name="body"/>
+				<input type="text" name="body" placeholder="질문 내용을 입력해 주세요"/>
 			</div>
 			
 			<div class="">

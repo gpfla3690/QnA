@@ -33,6 +33,8 @@ public class QuestionController extends HttpServlet {
 		
 		questionSerivce.save(title, body);
 		
+		factory.redirectToJsp("/");
+		
 	}
 
 }

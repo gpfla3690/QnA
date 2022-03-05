@@ -1,5 +1,6 @@
 package qna.util;
 
+import java.io.IOException;
 import java.io.UnsupportedEncodingException;
 import jakarta.servlet.RequestDispatcher;
 import jakarta.servlet.http.HttpServletRequest;
@@ -39,5 +40,16 @@ public class RequestFactory {
 		}
 		
 	}
+	
+	public void redirectToJsp(String path) {
+		
+		try {
+			resp.sendRedirect(path);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
 
 }
