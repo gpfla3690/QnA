@@ -8,12 +8,22 @@ import jakarta.servlet.http.HttpServletResponse;
 import lombok.Data;
 
 @Data
-public class RequestFactory {
+public class AppRequest {
 	
 	private HttpServletRequest req;
 	private HttpServletResponse resp;
 	
-	public RequestFactory(HttpServletRequest req, HttpServletResponse resp) {
+	public String getReqUri() {
+		return this.req.getRequestURI();
+	}
+	
+	public String getMethod() {
+		return this.req.getMethod();
+	}
+	
+	
+	
+	public AppRequest(HttpServletRequest req, HttpServletResponse resp) {
 		
 		try {
 			req.setCharacterEncoding("UTF-8");

@@ -8,7 +8,7 @@
 
 	<typeAliases>
 	
-		<typeAlias alias="Question" type="qna.vo.Question"/>
+		<typeAlias alias="Question" type="qna.web.vo.Question"/>
 	
 	</typeAliases>
 

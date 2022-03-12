@@ -9,6 +9,12 @@ import qna.web.vo.Question;
 
 public class QuestionService implements Service{
 	
+	@Override
+	public void autoWried() {
+		// TODO Auto-generated method stub
+		
+	}
+	
 	private QuestionDao questionDao;
 	private SqlSession sqlSession;
 	
@@ -29,10 +35,6 @@ public class QuestionService implements Service{
 		
 	}
 
-	@Override
-	public void autoWried() {
-		// TODO Auto-generated method stub
-		
-	}
+	
 
 }

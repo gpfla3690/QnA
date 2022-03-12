@@ -6,14 +6,14 @@ import jakarta.servlet.ServletException;
 import jakarta.servlet.annotation.WebServlet;
 import jakarta.servlet.http.HttpServletRequest;
 import jakarta.servlet.http.HttpServletResponse;
-import qna.app.util.RequestFactory;
+import qna.app.util.AppRequest;
 
 @WebServlet("/")
-public class HomeController extends HttpServlet {
+public class HomeServlet extends HttpServlet {
 	
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		
-		RequestFactory factory = new RequestFactory(request, response);
+		AppRequest factory = new AppRequest(request, response);
 		
 		factory.forwardToJsp("index");
 		

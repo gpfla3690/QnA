@@ -7,6 +7,7 @@ import qna.app.components.Component;
 import qna.app.configuration.SessionFactory;
 import qna.app.dao.QuestionDao;
 import qna.web.controller.QuestionController;
+import qna.web.repository.QuestionRepository;
 import qna.web.service.QuestionService;
 
 public class AppContainer {
@@ -17,15 +18,26 @@ public class AppContainer {
 	
 	public static QuestionController questionController;
 	public static QuestionService questionService;
+	public static QuestionRepository questionRepository;
 	
 	
 	public static void componentAssemble() {
 		
 		componentContainer = new ArrayList<>();
 		
-		questionDao = SessionFactory.getSession().getMapper(QuestionDao.class);
+		questionRepository = addComponent(new QuestionRepository());
+		
+		questionService = addComponent(new QuestionService());
 		
 		questionController = addComponent(new QuestionController());
+		
+		for( Component component : componentContainer) {
+			
+			component.autoWried();
+			
+		}
+		
+		
 		
 	}
 	
