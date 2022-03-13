@@ -3,8 +3,10 @@ package qna.web.vo;
 import java.time.LocalDateTime;
 
 import lombok.Getter;
+import lombok.Setter;
 
 @Getter
+@Setter
 public class Question {
 	
 	private int id;

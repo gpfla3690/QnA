@@ -39,6 +39,30 @@ public class AppRequest {
 		
 	}
 	
+	private void print(String msg) {
+		
+		try {
+			resp.getWriter().append(msg);
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+	}
+	
+	private void println(String msg) {
+		print(msg + "\r\n");
+	}
+	
+	public void alertRedirect(String path, String msg) {
+		println("<script>");
+		println("alert('" + msg +"')");
+		println("window.location.replace('" + path +"')");
+		println("</script>");
+	}
+	
+	
+	
+	
 	public void render(String path) {
 		
 		if( path.startsWith("redirect:") ) {

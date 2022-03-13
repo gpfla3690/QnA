@@ -10,5 +10,9 @@ public interface QuestionDao {
 	
 	List<Question> findAll();
 	
+	Question findById(int id);
+	
+	void modify(Question question);
+	
 
 }

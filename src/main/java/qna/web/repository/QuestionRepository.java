@@ -35,4 +35,14 @@ public class QuestionRepository implements Repository{
 		return questionDao.findAll();
 	}
 
+	public Question findById(int id) {
+		return questionDao.findById(id);
+	}
+
+	public void modify(Question question) {
+		questionDao.modify(question);
+		session.commit();
+		
+	}
+
 }

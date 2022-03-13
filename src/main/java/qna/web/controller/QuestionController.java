@@ -22,7 +22,24 @@ public class QuestionController implements Controller{
 	@Override
 	public void getMapping(AppRequest appReq, UriProcessor uriProcessor) {
 		
-		switch( uriProcessor.getRequestUri() ) {
+		String requestUri = uriProcessor.getRequestUri();
+		int targetIndex = uriProcessor.getTargetIndex();
+		
+		switch( uriProcessor.getActionCode() ) {
+		
+			case "detail":
+				requestUri = "/qna/questions/detail";
+				break;
+			case "delete":
+				requestUri = "/qna/questions/delete";
+				break;
+			case "modify":
+				requestUri = "/qna/questions/modify";
+				break;
+		}
+		
+		
+		switch( requestUri ) {
 			
 			case "/qna/questions/add":
 				showWrite(appReq);
@@ -30,7 +47,9 @@ public class QuestionController implements Controller{
 			case "/qna/questions":
 				showList(appReq);
 				break;
-		
+			case "/qna/questions/modify":
+				showModify(appReq, targetIndex);
+				break;
 		}
 		
 	}
@@ -38,12 +57,67 @@ public class QuestionController implements Controller{
 	@Override
 	public void postMapping(AppRequest appReq, UriProcessor uriProcessor) {
 		
-		switch( uriProcessor.getRequestUri() ) {
+		String requestUri = uriProcessor.getRequestUri();
+		
+		switch( uriProcessor.getActionCode() ) {
+		
+			case "detail":
+				requestUri = "/qna/questions/detail";
+				break;
+			case "modify":
+				requestUri = "/qna/questions/modify";
+				break;
+	}
+	
+				
+		
+		switch( requestUri ) {
 		
 			case "/qna/questions/add":
 				doWrite(appReq);
 				break;
+			case "/qna/questons/modify":
+				doModify(appReq);
+				break;
 		}
+		
+	}
+	
+	
+	public void showModify(AppRequest appRequest, int targetIndex) {
+		
+		try {
+		
+		Question findQuestion = questionService.findById(targetIndex);
+		appRequest.addAttribute("question", findQuestion);
+		appRequest.render("usr/question/modify");
+		
+		} catch(Exception e) {
+			appRequest.alertRedirect("/qna/questions", e.getMessage());
+		}
+	}
+	
+	public void doModify(AppRequest appRequest) {
+		
+		// 바꾼 데이터
+		int id = Integer.parseInt(appRequest.getAttribute("id", String.class))
+		String title = appRequest.getAttribute("title", String.class);
+		String body = appRequest.getAttribute("body", String.class);
+				
+		try {
+		
+		Question findQuestion = questionService.findById(id);
+		
+		findQuestion.setTitle(title);
+		findQuestion.setBody(body);
+		
+		questionService.modify(findQuestion);
+		
+		appRequest.alertRedirect("/qna/questions/" + id, "성공적으로 수정 되었습니다.");
+		} catch(Exception e) {
+			appRequest.alertRedirect("/qna/questions", e.getMessage());
+		}
+		
 		
 	}
 

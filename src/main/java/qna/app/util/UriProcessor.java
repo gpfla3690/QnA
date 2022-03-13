@@ -13,6 +13,8 @@ public class UriProcessor {
 	
 	private String ControllerCode = "";
 	
+	private String actionCode = "";
+	
 	private int targetIndex = 0;
 	
 	
@@ -63,17 +65,21 @@ public class UriProcessor {
 			
 			try {
 				this.targetIndex = Integer.parseInt(splitUri[3]);
+				this.actionCode = "detail";
 				this.isValid = true;
 			}catch(Exception e) {
+				this.actionCode = splitUri[3];
 				this.targetIndex = 0;
 			}
 		} else if(splitUri.length >= 5) {
 			
 			try {
 				this.targetIndex = Integer.parseInt(splitUri[4]);
+				this.actionCode = splitUri[3];
 				this.isValid = true;
 			}catch(Exception e) {
 				this.targetIndex = 0;
+				this.actionCode = splitUri[3];
 				this.isValid = false;
 			}
 			
