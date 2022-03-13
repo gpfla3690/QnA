@@ -15,6 +15,19 @@ public class UriProcessor {
 	
 	private int targetIndex = 0;
 	
+	
+	public void printCurrentStatus() {
+		System.out.println("================");
+		System.out.println("requestUri :" + requestUri);
+		System.out.println("isIndex :" + isIndex);
+		System.out.println("isValid :" + isValid);
+		System.out.println("ControllerCode :" + ControllerCode);
+		System.out.println("targetIndex :" + targetIndex);
+		System.out.println("=================");
+		
+	}
+	
+	
 	public UriProcessor(String requestUri) {
 		
 		this.requestUri = requestUri;

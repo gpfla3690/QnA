@@ -14,7 +14,7 @@
 	
 	<div class="question-form-container">
 	
-		<form action="/question/add" method="post">
+		<form action="/qna/questions/add" method="POST">
 		
 			<div class="">
 				<input type="text" name="title" placeholder="질문 제목을 입력해 주세요"/>

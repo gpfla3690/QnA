@@ -2,6 +2,9 @@ package qna.web.vo;
 
 import java.time.LocalDateTime;
 
+import lombok.Getter;
+
+@Getter
 public class Question {
 	
 	private int id;

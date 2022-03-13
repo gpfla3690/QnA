@@ -15,7 +15,7 @@ public class HomeServlet extends HttpServlet {
 		
 		AppRequest factory = new AppRequest(request, response);
 		
-		factory.forwardToJsp("index");
+		factory.render("index");
 		
 	}
 

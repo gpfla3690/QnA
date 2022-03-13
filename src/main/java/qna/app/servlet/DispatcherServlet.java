@@ -25,7 +25,7 @@ public class DispatcherServlet extends HttpServlet {
 		UriProcessor uriProcessor = new UriProcessor(appRequest.getReqUri());
 		
 		if( uriProcessor.isIndex() ) {
-			appRequest.forwardToJsp("index");
+			appRequest.render("index");
 		}
 		
 		if( !uriProcessor.isValid() || uriProcessor.getControllerCode().equals("")) {
@@ -33,6 +33,8 @@ public class DispatcherServlet extends HttpServlet {
 		}
 		
 		Controller findController = findController(uriProcessor.getControllerCode());
+		
+		uriProcessor.printCurrentStatus();
 		
 		switch(appRequest.getMethod()) {
 		
@@ -63,7 +65,7 @@ public class DispatcherServlet extends HttpServlet {
 
 	
 	protected void doPost(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-	
+		doGet(request, response);
 	}
 
 }

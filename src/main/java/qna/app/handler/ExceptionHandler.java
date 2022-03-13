@@ -6,7 +6,7 @@ public class ExceptionHandler implements Handler{
 
 	@Override
 	public void handlerRepuest(AppRequest appRequest) {
-		appRequest.forwardToJsp("error/error");
+		appRequest.render("error/error");
 		
 	}
 

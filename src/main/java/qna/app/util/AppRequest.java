@@ -39,7 +39,22 @@ public class AppRequest {
 		
 	}
 	
-	public void forwardToJsp(String path) {
+	public void render(String path) {
+		
+		if( path.startsWith("redirect:") ) {
+			
+			String[] split = path.split("redirect:");
+			redirectToJsp(split[1]);
+			
+		}else {
+			forwardToJsp(path);
+		}
+		
+	}
+	
+	
+	
+	private void forwardToJsp(String path) {
 		
 		RequestDispatcher requestDispatcher = req.getRequestDispatcher("/WEB-INF/" + path + ".jsp");
 				
@@ -51,7 +66,7 @@ public class AppRequest {
 		
 	}
 	
-	public void redirectToJsp(String path) {
+	private void redirectToJsp(String path) {
 		
 		try {
 			resp.sendRedirect(path);
@@ -59,6 +74,16 @@ public class AppRequest {
 			e.printStackTrace();
 		}
 		
+	}
+	
+	
+	public <T> T getAttribute(String name, Class<T> type) {
+		return type.cast(req.getParameter(name));
+	}
+	
+	
+	public void addAttribute(String name, Object object) {
+		this.req.setAttribute(name, object);
 	}
 	
 
